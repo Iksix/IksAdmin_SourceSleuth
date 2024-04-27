@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "da3SRkzJPCdbhgXRWBltCkeLJotaAeUdC4weCotiVFqGy3MG8XRRK0cV15ZslpamRzUrDY66aGtRt+sLvgnPiQ==",
-  "success": false,
+  "dgSpecHash": "nb1SDSczyK5dlqWamo9ap32/xdxvVP25nVHGzJWLzeZcPoGGhK9u/a+19cyYobUiz8M2XZ7qmA0BmcN3C/MwTg==",
+  "success": true,
   "projectFilePath": "E:\\_Plugins\\IksAdmin_SourceSleuth\\IksAdmin_SourceSleuth.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Iks\\.nuget\\packages\\counterstrikesharp.api\\1.0.217\\counterstrikesharp.api.1.0.217.nupkg.sha512",
+    "C:\\Users\\Iks\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
     "C:\\Users\\Iks\\.nuget\\packages\\mcmaster.netcore.plugins\\1.4.0\\mcmaster.netcore.plugins.1.4.0.nupkg.sha512",
     "C:\\Users\\Iks\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Iks\\.nuget\\packages\\microsoft.dotnet.apicompat.task\\8.0.203\\microsoft.dotnet.apicompat.task.8.0.203.nupkg.sha512",
@@ -38,6 +39,7 @@
     "C:\\Users\\Iks\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
     "C:\\Users\\Iks\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\8.0.0\\microsoft.extensions.options.configurationextensions.8.0.0.nupkg.sha512",
     "C:\\Users\\Iks\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\Iks\\.nuget\\packages\\mysqlconnector\\2.3.7\\mysqlconnector.2.3.7.nupkg.sha512",
     "C:\\Users\\Iks\\.nuget\\packages\\scrutor\\4.2.2\\scrutor.4.2.2.nupkg.sha512",
     "C:\\Users\\Iks\\.nuget\\packages\\serilog\\3.1.1\\serilog.3.1.1.nupkg.sha512",
     "C:\\Users\\Iks\\.nuget\\packages\\serilog.extensions.logging\\8.0.0\\serilog.extensions.logging.8.0.0.nupkg.sha512",
@@ -52,15 +54,5 @@
     "C:\\Users\\Iks\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512",
     "C:\\Users\\Iks\\.nuget\\packages\\system.text.json\\8.0.0\\system.text.json.8.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1105",
-      "level": "Error",
-      "message": "Unable to find project information for 'D:\\__iksAdmin\\Iks_Admin\\IksAdminApi\\IksAdminApi.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore.",
-      "libraryId": "D:\\__iksAdmin\\Iks_Admin\\IksAdminApi\\IksAdminApi.csproj",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "logs": []
 }

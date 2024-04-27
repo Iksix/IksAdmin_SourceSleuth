@@ -1,0 +1,3 @@
+{
+  "NotifyMessage" : "{red}ВНИМАНИЕ!!!\nИгрок: {red}{name}\nSteamId: {red}{steamId}\nIp: {red}{ip}\n{white}Имеет активную блокироку на аккаунте {red}{bannedName}{white}!\nПричина: {red}{banReason}\nЗабаненный аккаунт: \n{red}steamcommunity.com/profiles/{bannedId}"
+}

@@ -1,0 +1,3 @@
+{
+  "NotifyMessage" : "{red}ATTENTION!!!\nPlayer: {red}{name}\nSteamId: {red}{steamId}\nIp: {red}{ip}\n{white}Has an active block on the account {red}{bannedName}{white}!\nReason: {red}{banReason}\nBanned account: \n{red}steamcommunity.com/profiles/{bannedId}"
+}

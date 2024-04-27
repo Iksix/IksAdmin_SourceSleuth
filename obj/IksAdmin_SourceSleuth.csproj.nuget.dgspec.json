@@ -27,17 +27,18 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {
-              "D:\\__iksAdmin\\Iks_Admin\\IksAdminApi\\IksAdminApi.csproj": {
-                "projectPath": "D:\\__iksAdmin\\Iks_Admin\\IksAdminApi\\IksAdminApi.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -47,6 +48,14 @@
             "CounterStrikeSharp.API": {
               "target": "Package",
               "version": "[1.0.217, )"
+            },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.1.35, )"
+            },
+            "MySqlConnector": {
+              "target": "Package",
+              "version": "[2.3.7, )"
             }
           },
           "imports": [
