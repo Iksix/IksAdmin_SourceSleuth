@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "E:\\_Plugins\\IksAdmin_SourceSleuth\\IksAdmin_SourceSleuth.csproj": {}
+    "E:\\_pluginsWork\\IksAdmin_SourceSleuth\\IksAdmin_SourceSleuth.csproj": {}
   },
   "projects": {
-    "E:\\_Plugins\\IksAdmin_SourceSleuth\\IksAdmin_SourceSleuth.csproj": {
+    "E:\\_pluginsWork\\IksAdmin_SourceSleuth\\IksAdmin_SourceSleuth.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\_Plugins\\IksAdmin_SourceSleuth\\IksAdmin_SourceSleuth.csproj",
+        "projectUniqueName": "E:\\_pluginsWork\\IksAdmin_SourceSleuth\\IksAdmin_SourceSleuth.csproj",
         "projectName": "IksAdmin_SourceSleuth",
-        "projectPath": "E:\\_Plugins\\IksAdmin_SourceSleuth\\IksAdmin_SourceSleuth.csproj",
-        "packagesPath": "C:\\Users\\Iks\\.nuget\\packages\\",
-        "outputPath": "E:\\_Plugins\\IksAdmin_SourceSleuth\\obj\\",
+        "projectPath": "E:\\_pluginsWork\\IksAdmin_SourceSleuth\\IksAdmin_SourceSleuth.csproj",
+        "packagesPath": "C:\\Users\\iks\\.nuget\\packages\\",
+        "outputPath": "E:\\_pluginsWork\\IksAdmin_SourceSleuth\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Iks\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\iks\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -47,7 +45,7 @@
           "dependencies": {
             "CounterStrikeSharp.API": {
               "target": "Package",
-              "version": "[1.0.217, )"
+              "version": "[*, )"
             },
             "Dapper": {
               "target": "Package",
@@ -74,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

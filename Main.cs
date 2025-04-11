@@ -2,27 +2,19 @@
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Core.Capabilities;
+using CounterStrikeSharp.API.Modules.Entities;
 using Dapper;
 using IksAdminApi;
 using MySqlConnector;
 
 namespace IksAdmin_SourceSleuth;
 
-public class Main : BasePlugin, IPluginConfig<PluginConfig>
+public class Main : AdminModule, IPluginConfig<PluginConfig>
 {
     public override string ModuleName => "IksAdmin_SourceSleuth";
-    public override string ModuleVersion => "1.0.0";
+    public override string ModuleVersion => "1.0.1";
     public override string ModuleAuthor => "iks__";
-    
-    private readonly PluginCapability<IIksAdminApi> _adminPluginCapability = new("iksadmin:core");
-    public static IIksAdminApi? AdminApi;
-    public override void OnAllPluginsLoaded(bool hotReload)
-    {
-        AdminApi = _adminPluginCapability.Get();
-    }
-    
     public PluginConfig Config { get; set; }
-    
     public void OnConfigParsed(PluginConfig config)
     {
         Config = config;
@@ -32,9 +24,9 @@ public class Main : BasePlugin, IPluginConfig<PluginConfig>
     public HookResult OnPlayerConnectFull(EventPlayerConnectFull @event, GameEventInfo info)
     {
         var player = @event.Userid;
-        if (player.IsBot || !player.IsValid || player.AuthorizedSteamID == null) return HookResult.Continue;
+        if (player == null || player.IsBot || !player.IsValid || player.AuthorizedSteamID == null) return HookResult.Continue;
 
-        var playerInfo = player.GetInfo();
+        var playerInfo = new PlayerInfo(player);
         
         Task.Run(async () =>
         {
@@ -43,30 +35,31 @@ public class Main : BasePlugin, IPluginConfig<PluginConfig>
                 return;
             if (Config.BanNewPlayerAccount)
             {
-                oldBan.Reason += $" [SS ({oldBan.Sid})]";
-                oldBan.Sid = playerInfo.SteamId.SteamId64.ToString();
+                oldBan.Reason += $" [SS ({oldBan.SteamId})]";
+                oldBan.SteamId = playerInfo.SteamId;
                 oldBan.Name = playerInfo.PlayerName;
-                await AdminApi!.AddBan("CONSOLE", oldBan);
+                oldBan.AdminId = Api.ConsoleAdmin.Id;
+                await Api.AddBan(oldBan);
                 return;
             }
             Server.NextFrame(() =>
             {
                 var message = Localizer["NotifyMessage"].Value
                         .Replace("{name}", playerInfo.PlayerName)
-                        .Replace("{steamId}", playerInfo.SteamId.SteamId64.ToString())
-                        .Replace("{ip}", playerInfo.IpAddress)
-                        .Replace("{bannedId}", oldBan.Sid)
+                        .Replace("{steamId}", playerInfo.SteamId)
+                        .Replace("{ip}", playerInfo.Ip)
+                        .Replace("{bannedId}", oldBan.SteamId)
                         .Replace("{bannedName}", oldBan.Name)
                         .Replace("{banReason}", oldBan.Reason)
                     ;
                 if (Config.NotifyAllAboutBan)
-                    AdminApi!.SendMessageToAll(message);
+                    AdminUtils.PrintToServer(message);
                 else
                 {
-                    var onlineAdmins = Utilities.GetPlayers().Where(x => AdminApi!.GetAdmin(x) != null);
+                    var onlineAdmins = Utilities.GetPlayers().Where(x => x.Admin() != null);
                     foreach (var admin in onlineAdmins)
                     {
-                        AdminApi!.SendMessageToPlayer(admin, message);
+                        admin.Print(message);
                     }
                 }
             });
@@ -79,36 +72,32 @@ public class Main : BasePlugin, IPluginConfig<PluginConfig>
     {
         try
         {
-            await using var conn = new MySqlConnection(AdminApi!.DbConnectionString);
+            await using var conn = new MySqlConnection(Api.DbConnectionString);
             await conn.OpenAsync();
             var ban = await conn.QueryFirstOrDefaultAsync<PlayerBan>(@"
-            select 
-            name as name,
-            sid as sid,
+            select
+            id as id,
+            steam_id as steamId,
             ip as ip,
-            adminsid as adminSid,
-            adminName as adminName,
-            created as created,
-            time as time,
-            end as end,
+            name as name,
+            duration as duration,
             reason as reason,
+            ban_type as banType,
             server_id as serverId,
-            BanType as banType,
-            Unbanned as unbanned,
-            UnbannedBy as unbannedBy,
-            id as id
+            admin_id as adminId,
+            unbanned_by as unbannedBy,
+            unban_reason as unbanReason,
+            created_at as createdAt,
+            end_at as endAt,
+            updated_at as updatedAt,
+            deleted_at as deletedAt
             from iks_bans
-            where ip LIKE @ip and (end > @timeNow or time = 0) and Unbanned = 0 and (server_id = @server_id or server_id = '')
-            ", new {ip = $"%{player.IpAddress.Split(":")[0]}%", timeNow = DateTimeOffset.UtcNow.ToUnixTimeSeconds(), server_id = AdminApi.Config.ServerId});
-            
-            if (ban != null)
-            {
-                if (ban.ServerId.Trim() != "" && ban.ServerId != AdminApi.Config.ServerId)
-                {
-                    return null;
-                }
-            }
-            
+            where deleted_at is null
+            and ip = @ip
+            and unbanned_by is null
+            and (end_at > unix_timestamp() or end_at = 0)
+            and (server_id is null or server_id = @serverId)
+            ", new {ip = player.Ip, timeNow = DateTimeOffset.UtcNow.ToUnixTimeSeconds(), server_id = Api.Config.ServerId});
             return ban;
         }
         catch (Exception e)

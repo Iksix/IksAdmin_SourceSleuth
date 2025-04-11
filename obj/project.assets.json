@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "CounterStrikeSharp.API/1.0.217": {
+      "CounterStrikeSharp.API/1.0.316": {
         "type": "package",
         "dependencies": {
           "McMaster.NETCore.Plugins": "1.4.0",
@@ -16,7 +16,8 @@
           "Serilog.Extensions.Logging": "8.0.0",
           "Serilog.Sinks.Console": "5.0.0",
           "Serilog.Sinks.File": "5.0.0",
-          "System.Data.DataSetExtensions": "4.5.0"
+          "System.Data.DataSetExtensions": "4.5.0",
+          "Tomlyn": "0.19.0"
         },
         "compile": {
           "lib/net8.0/CounterStrikeSharp.API.dll": {
@@ -923,18 +924,31 @@
         "build": {
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
+      },
+      "Tomlyn/0.19.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Tomlyn.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Tomlyn.dll": {
+            "related": ".xml"
+          }
+        }
       }
     }
   },
   "libraries": {
-    "CounterStrikeSharp.API/1.0.217": {
-      "sha512": "ciQehWx1p4JH6pZqv4MRjtCL5nDfghkJrJFXA9AHKdv7Jomexy+E2XFApZWMWNG7xhl31v+9nc7E+tmmarEUvQ==",
+    "CounterStrikeSharp.API/1.0.316": {
+      "sha512": "KARlR7SFJifo6auAPafkPQsQZF63mDi7sF3oERVEhyBOcm0eInltlzW9H6dVQ0FGoBV5dmkS0kpNkmJTX9rAAA==",
       "type": "package",
-      "path": "counterstrikesharp.api/1.0.217",
+      "path": "counterstrikesharp.api/1.0.316",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "counterstrikesharp.api.1.0.217.nupkg.sha512",
+        "counterstrikesharp.api.1.0.316.nupkg.sha512",
         "counterstrikesharp.api.nuspec",
         "lib/net8.0/CounterStrikeSharp.API.dll",
         "lib/net8.0/CounterStrikeSharp.API.runtimeconfig.json",
@@ -2595,36 +2609,51 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Tomlyn/0.19.0": {
+      "sha512": "GlI2o8R8jbZIaE+YX6uA/VoAOH7zIxYeqxDm7jHW2hqUhuB+q19oKold35FkMuv8IZDoCqsTMolaBv2eBLBmrQ==",
+      "type": "package",
+      "path": "tomlyn/0.19.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net8.0/Tomlyn.dll",
+        "lib/net8.0/Tomlyn.xml",
+        "lib/netstandard2.0/Tomlyn.dll",
+        "lib/netstandard2.0/Tomlyn.xml",
+        "logo.png",
+        "readme.md",
+        "tomlyn.0.19.0.nupkg.sha512",
+        "tomlyn.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "CounterStrikeSharp.API >= 1.0.217",
+      "CounterStrikeSharp.API >= *",
       "Dapper >= 2.1.35",
       "MySqlConnector >= 2.3.7"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Iks\\.nuget\\packages\\": {}
+    "C:\\Users\\iks\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\_Plugins\\IksAdmin_SourceSleuth\\IksAdmin_SourceSleuth.csproj",
+      "projectUniqueName": "E:\\_pluginsWork\\IksAdmin_SourceSleuth\\IksAdmin_SourceSleuth.csproj",
       "projectName": "IksAdmin_SourceSleuth",
-      "projectPath": "E:\\_Plugins\\IksAdmin_SourceSleuth\\IksAdmin_SourceSleuth.csproj",
-      "packagesPath": "C:\\Users\\Iks\\.nuget\\packages\\",
-      "outputPath": "E:\\_Plugins\\IksAdmin_SourceSleuth\\obj\\",
+      "projectPath": "E:\\_pluginsWork\\IksAdmin_SourceSleuth\\IksAdmin_SourceSleuth.csproj",
+      "packagesPath": "C:\\Users\\iks\\.nuget\\packages\\",
+      "outputPath": "E:\\_pluginsWork\\IksAdmin_SourceSleuth\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Iks\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\iks\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2650,7 +2679,7 @@
         "dependencies": {
           "CounterStrikeSharp.API": {
             "target": "Package",
-            "version": "[1.0.217, )"
+            "version": "[*, )"
           },
           "Dapper": {
             "target": "Package",
@@ -2677,7 +2706,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

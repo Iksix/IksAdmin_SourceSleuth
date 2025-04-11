@@ -7,10 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CounterStrikeSharp.API" Version="1.0.217" />
+    <PackageReference Include="CounterStrikeSharp.API" Version="*" />
     <PackageReference Include="Dapper" Version="2.1.35" />
     <PackageReference Include="MySqlConnector" Version="2.3.7" />
-    <Reference Include="D:\__iksAdmin\Iks_Admin\IksAdmin\bin\Debug\net8.0\IksAdminApi.dll" />
+    <Reference Include="E:\__iksAdmin\Iks_Admin\IksAdmin\build\IksAdmin\shared\IksAdminApi\IksAdminApi.dll"/>
   </ItemGroup>
 
 </Project>
