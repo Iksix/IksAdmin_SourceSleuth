@@ -27,7 +27,8 @@ public class Main : AdminModule, IPluginConfig<PluginConfig>
         if (player == null || player.IsBot || !player.IsValid || player.AuthorizedSteamID == null) return HookResult.Continue;
 
         var playerInfo = new PlayerInfo(player);
-        
+        if (playerInfo.Ip!.Contains(Api.Config.ServerIp))     
+            return HookResult.Continue;   
         Task.Run(async () =>
         {
             var oldBan = await GetLastPlayerIpBan(playerInfo);
