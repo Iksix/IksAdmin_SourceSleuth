@@ -98,7 +98,7 @@ public class Main : AdminModule, IPluginConfig<PluginConfig>
             and unbanned_by is null
             and (end_at > unix_timestamp() or end_at = 0)
             and (server_id is null or server_id = @serverId)
-            ", new {ip = player.Ip, timeNow = DateTimeOffset.UtcNow.ToUnixTimeSeconds(), server_id = Api.Config.ServerId});
+            ", new {ip = player.Ip, timeNow = DateTimeOffset.UtcNow.ToUnixTimeSeconds(), serverId = Api.Config.ServerId});
             return ban;
         }
         catch (Exception e)
